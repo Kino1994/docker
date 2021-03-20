@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  rabbitmq:
+    image: rabbitmq:3.8.14
+    volumes:
+      - ./rabbitmq:/data/aqmp
+    ports:
+      - 5672:5672
+  mongo:
+    image: mongo:4.4-bionic
+    volumes:
+      - ./mongo:/data/db
+    ports:
+      - 27017:27017
+  sql:
+    image: mysql:8.0.23
+    volumes:
+      - ./mysql:/data/db
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_DATABASE=eoloplantsDB
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
+
+
