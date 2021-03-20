@@ -1,6 +1,7 @@
 FROM maven as builder
 WORKDIR /code/
 COPY pom.xml /code/
+RUN mvn clean verify --fail-never 
 COPY /src /code/src
 RUN mvn package
 
