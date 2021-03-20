@@ -7,10 +7,12 @@ RUN npm install --only=production
 FROM node:lts-alpine
 ENV NODE_ENV production
 WORKDIR /usr/app/
+RUN apk add curl && apk add bash
+RUN curl -LJO https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh && chmod +x /usr/app/wait-for-it.sh
 COPY --from=builder /usr/app/node_modules /usr/app/node_modules
 COPY --from=builder /usr/app/package.json /usr/app/
 COPY config /usr/app/config
 COPY src /usr/app/src
 EXPOSE 5000
-ENTRYPOINT ["node"]
-CMD ["src/server.js"]
+ENTRYPOINT ["./wait-for-it.sh"]
+CMD ["localhost:3306", "-s", "-t", "0"]

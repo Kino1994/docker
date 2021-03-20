@@ -18,9 +18,4 @@ services:
       - ./mysql:/data/db
     ports:
       - 3306:3306
-    environment:
-      - MYSQL_DATABASE=eoloplantsDB
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=password
-
 
