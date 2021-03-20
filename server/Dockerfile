@@ -10,7 +10,7 @@ ENV NODE_ENV production
 WORKDIR /usr/app/
 RUN apk add curl && curl -LJO https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh && chmod +x /usr/app/wait-for-it.sh
 COPY --from=builder /usr/app/node_modules /usr/app/node_modules
-COPY src /usr/app/src
+COPY /src /usr/app/src
 EXPOSE 5000
 ENTRYPOINT ["node"]
 CMD ["src/server.js"]
