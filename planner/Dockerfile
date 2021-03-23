@@ -7,7 +7,6 @@ RUN mvn package
 
 FROM openjdk:11-jre
 WORKDIR /usr/app
-RUN curl -LJO https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh && chmod +x /usr/app/wait-for-it.sh
 COPY --from=builder /code/target/*.jar /usr/app/app.jar
 EXPOSE 8080
 ENTRYPOINT ["java"]

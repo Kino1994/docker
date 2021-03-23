@@ -14,5 +14,5 @@ COPY --from=builder /usr/app/package.json /usr/app/
 COPY config /usr/app/config
 COPY src /usr/app/src
 EXPOSE 3000
-ENTRYPOINT ["node"]
-CMD ["src/server.js"]
+ENTRYPOINT ["./wait-for-it.sh"]
+CMD ["-t", "0", "mysql:3306", "--", "./wait-for-it.sh", "-t", "0", "rabbitmq:5672", "--", "node", "src/server.js"
