@@ -9,7 +9,7 @@ services:
     depends_on: 
     - mysql
     - rabbitmq
-    command: ["./wait-for-it.sh", "-t", "0", "mysql:3306", "--", "./wait-for-it.sh", "-t", "0", "rabbitmq:5672", "--", "node", "src/server.js"]
+    command: ["./wait-for-it.sh", "-s", "-t", "0", "mysql:3306", "--", "./wait-for-it.sh", "-t", "0", "rabbitmq:5672", "--", "node", "src/server.js"]
   planner: 
     image: kino1994/planner
     env_file:
@@ -17,7 +17,7 @@ services:
     depends_on:
     - toposervice
     - weatherservice
-  command: ["./wait-for-it.sh", "-t", "0", "rabbitmq:5672", "--", "java", "-jar", "app.jar"]
+    command: ["./wait-for-it.sh", "-t", "0", "rabbitmq:5672", "--", "java", "-jar", "app.jar"]
   weatherservice: 
     image: kino1994/weatherservice
     ports:
