@@ -28,6 +28,41 @@ $ node build.js
 
 Ejecuta los servicios. En proyectos Java usa Maven. En proyectos Node usa esta tecnología directamente:
 
+```$ node exec.js
 ```
-$ node exec.js
+
+
+## Construir las imagenes de docker
+
+
 ```
+$ ./dockerhub.sh usuario
+```
+
+## Construir y pushear las imagenes para publicar en Dockerhub
+
+
+```
+$ ./dockerhub.sh usuario --push
+```
+
+
+## Ejecutar imagen del docker-compose en modo producción
+
+Tomará las variables de entorno del fichero properties.env
+
+```
+$ docker-compose -f docker-compose-prod.yml up -d
+```
+
+
+## Desarrollo en local
+
+Arrancamos los servicios MongoDB, MySQL y RabbitMQ con el docker-compose de desarrollo:
+
+
+```
+$ docker-compose -f docker-compose-dev.yml up -d
+```
+
+Cada servicios tiene su propio `.devcontainer` configurado con todo lo necesario para ejecutar desde local

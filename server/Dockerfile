@@ -14,5 +14,4 @@ COPY --from=builder /usr/app/package.json /usr/app/
 COPY config /usr/app/config
 COPY src /usr/app/src
 EXPOSE 3000
-ENTRYPOINT ["node"]
-CMD ["src/server.js"]
+CMD ["node", "src/server.js"]

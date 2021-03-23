@@ -12,8 +12,9 @@ services:
       - ./mysql:/data/db
     ports:
       - 3306:3306
-    env_file:
-    - properties.env
+    environment:
+    - MYSQL_ROOT_PASSWORD=password
+    - MYSQL_DATABASE=eoloplantsDB
  rabbitmq:
     image: rabbitmq:3-management
     volumes:

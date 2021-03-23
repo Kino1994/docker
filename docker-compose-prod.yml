@@ -2,6 +2,7 @@ version: "3.9"
 services:
   server: 
     image: kino1994/server
+    restart: on-failure:10
     ports:
     - 3000:3000
     env_file:
