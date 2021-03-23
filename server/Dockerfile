@@ -13,6 +13,6 @@ COPY --from=builder /usr/app/node_modules /usr/app/node_modules
 COPY --from=builder /usr/app/package.json /usr/app/
 COPY config /usr/app/config
 COPY src /usr/app/src
-EXPOSE 5000
-ENTRYPOINT ["./wait-for-it.sh"]
-CMD ["localhost:3306", "-s", "-t", "0"]
+EXPOSE 3000
+ENTRYPOINT ["node"]
+CMD ["src/server.js"]
